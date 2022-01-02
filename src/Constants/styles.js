@@ -50,6 +50,14 @@ const styles = {
     display: "flex",
     position: "absolute",
   },
+  detailParentDiv: {
+    height: "100%",
+    width: "100%",
+    backgroundColor: "#141414",
+    maxWidth: "850px",
+    borderRadius: 10,
+    overflow: "scroll",
+  },
 };
 
 const colors = {

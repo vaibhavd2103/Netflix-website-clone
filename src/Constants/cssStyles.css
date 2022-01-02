@@ -107,23 +107,24 @@
 
 .category_poster {
   object-fit: contain;
-  width: 200px;
-  transition: 200ms;
+  width: 300px;
 }
 
 .movie_block {
-  transition: 200ms;
+  transition: 500ms;
   z-index: 10;
+  /* position: absolute; */
 }
 
 .movie_block:hover {
-  transform: scale(1.5);
+  transform: scale(1.2);
   box-shadow: 10px;
-  position: relative;
+  /* position: relative; */
   z-index: 100;
 }
 
 .category_poster {
+  border-radius: 5px;
   z-index: 100;
 }
 
@@ -134,6 +135,31 @@
 
 .category_div::-webkit-scrollbar {
   display: none;
+}
+
+.detail_parent_div::-webkit-scrollbar {
+  display: none;
+}
+
+.detail_movie_poster {
+  width: 100%;
+  object-fit: contain;
+}
+
+.detail_poster_fade {
+  width: 100%;
+  background-image: linear-gradient(
+    to top,
+    #141414,
+    #141414cf,
+    #14141466,
+    #14141422,
+    rgba(0, 0, 0, 0)
+  );
+  height: 200px;
+  position: absolute;
+  z-index: 5;
+  bottom: 100;
 }
 
 @keyframes fadeIn {

@@ -9,6 +9,8 @@ import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Category from "../Components/Category";
 import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+import axios from "axios";
+import MovieDetail from "../Components/MovieDetail";
 
 function Home() {
   const { width, height } = useWindowDimensions();
@@ -19,15 +21,20 @@ function Home() {
   useEffect(() => {
     const fetchMovies = async () => {
       instance.get(requests.fetchTrending).then((response) => {
-        console.log(response.data.results[id]);
+        //    console.log(response.data.results[id]);
         setMovies(response.data.results[id]);
         setLoading(false);
       });
     };
     fetchMovies();
   }, []);
+  const [detail, setDetail] = useState(false);
+  const [movieData, setMovieData] = useState();
+  //   console.log(movieData);
+
   return (
     <>
+      {/* {detail && <MovieDetail />} */}
       {loading ? (
         <div
           style={{
@@ -49,6 +56,28 @@ function Home() {
       ) : (
         <>
           <TopNavigator />
+          {detail && (
+            <div
+              style={{
+                backgroundColor: "#000000aa",
+                height: "100%",
+                width: "100%",
+                position: "fixed",
+                zIndex: 50,
+                justifyContent: "center",
+                alignItems: "center",
+                display: "flex",
+                padding: 30,
+                paddingLeft: 15,
+                paddingRight: 100,
+              }}
+              onClick={() => {
+                setDetail(false);
+              }}
+            >
+              <MovieDetail item={movieData} />
+            </div>
+          )}
           <div className="home_container">
             <div style={{}}>
               <img
@@ -72,7 +101,7 @@ function Home() {
                     fontWeight: "500",
                     marginBottom: 20,
                     fontSize: width / 25,
-                    zIndex: 100,
+                    zIndex: 40,
                     textShadow: 10,
                     maxWidth: 600,
                   }}
@@ -86,7 +115,7 @@ function Home() {
                     fontWeight: "500",
                     marginBottom: 20,
                     fontSize: width / 85,
-                    zIndex: 100,
+                    zIndex: 40,
                     textShadow: 20,
                     maxWidth: 600,
                     color: "#fff",
@@ -164,7 +193,12 @@ function Home() {
               }}
             >
               {/* <div className="poster_fade"></div> */}
-
+              <Category
+                title={"Movies for you"}
+                fetchURL={requests.fetchAllMovies}
+                setDetail={setDetail}
+                setMovieData={setMovieData}
+              />
               <Category
                 title={"Action Movies"}
                 fetchURL={requests.fetchAction}
