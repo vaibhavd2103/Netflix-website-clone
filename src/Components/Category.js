@@ -6,17 +6,13 @@ import requests from "../requests";
 import "../Constants/cssStyles.css";
 // import { API_KEY } from "../requests";
 
-function Category({ title, fetchURL, setDetail, setMovieData }) {
+function Category({ title, fetchURL, setDetail }) {
   const [hover, setHover] = useState(false);
 
   const [loading, setLoading] = useState(true);
   const imageUrl = "https://image.tmdb.org/t/p/original/";
 
   const [movies, setMovies] = useState([]);
-
-  const id = Math.floor(Math.random() * 20);
-  const [movieID, setMovieID] = useState();
-  //   const [movieData, setMovieData] = useState();
 
   useEffect(() => {
     const fetchMovies = async () => {
@@ -29,16 +25,16 @@ function Category({ title, fetchURL, setDetail, setMovieData }) {
     fetchMovies();
   }, []);
 
-  const fetchMovie = async (id) => {
-    await instance
-      .get(`/movie/${id}?api_key=1bbd459c320f161b8dee93104cf1740e`)
-      .then((response) => {
-        console.log(response.data);
-        setMovieData(response.data);
-        //    console.log(movieData);
-      });
-    //     localStorage.setItem("data", movieData);
-  };
+  //   const fetchMovie = async (id) => {
+  //     await instance
+  //       .get(`/movie/${id}?api_key=1bbd459c320f161b8dee93104cf1740e`)
+  //       .then((response) => {
+  //         console.log(response.data);
+  //         setMovieData(response.data);
+  //         //    console.log(movieData);
+  //       });
+  //     localStorage.setItem("id", id);
+  //   };
 
   return (
     <>
@@ -92,8 +88,9 @@ function Category({ title, fetchURL, setDetail, setMovieData }) {
               return (
                 <div
                   onClick={() => {
-                    fetchMovie(item.id);
+                    // fetchMovie(item.id);
                     setDetail(true);
+                    localStorage.setItem("id", item.id);
                   }}
                   onMouseOver={() => {
                     setHover(true);

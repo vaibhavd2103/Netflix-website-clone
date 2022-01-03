@@ -29,8 +29,6 @@ function Home() {
     fetchMovies();
   }, []);
   const [detail, setDetail] = useState(false);
-  const [movieData, setMovieData] = useState();
-  //   console.log(movieData);
 
   return (
     <>
@@ -75,7 +73,7 @@ function Home() {
                 setDetail(false);
               }}
             >
-              <MovieDetail item={movieData} />
+              <MovieDetail />
             </div>
           )}
           <div className="home_container">
@@ -197,7 +195,6 @@ function Home() {
                 title={"Movies for you"}
                 fetchURL={requests.fetchAllMovies}
                 setDetail={setDetail}
-                setMovieData={setMovieData}
               />
               <Category
                 title={"Action Movies"}

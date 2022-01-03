@@ -144,6 +144,11 @@
 .detail_movie_poster {
   width: 100%;
   object-fit: contain;
+  z-index: 20;
+}
+
+.detail_poster {
+  object-fit: contain;
 }
 
 .detail_poster_fade {
@@ -154,12 +159,14 @@
     #141414cf,
     #14141466,
     #14141422,
-    rgba(0, 0, 0, 0)
+    rgba(255, 0, 0, 0)
   );
-  height: 200px;
+  /* background-color: red; */
+  /* height: 200px; */
   position: absolute;
   z-index: 5;
-  bottom: 100;
+  max-width: 850px;
+  /* top: 310px; */
 }
 
 @keyframes fadeIn {
