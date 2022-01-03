@@ -23,4 +23,4 @@ const requests = {
   fetchMovie: `/movie/429617?api_key=${API_KEY}`,
 };
 
-export default requests;
+export { requests };

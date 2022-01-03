@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import instance from "../axios";
 import { colors, styles } from "../Constants/styles";
-import requests from "../requests";
+import { requests } from "../requests";
 import "../Constants/cssStyles.css";
 // import { API_KEY } from "../requests";
 

@@ -51,7 +51,6 @@ const styles = {
     position: "absolute",
   },
   detailParentDiv: {
-    height: "100%",
     width: "100%",
     backgroundColor: "#141414",
     maxWidth: "850px",

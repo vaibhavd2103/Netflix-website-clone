@@ -3,7 +3,7 @@ import TopNavigator from "../Components/TopNavigator";
 import "../Constants/cssStyles.css";
 import { colors, styles, useWindowDimensions } from "../Constants/styles";
 import instance from "../axios";
-import requests from "../requests";
+import { requests } from "../requests";
 import Loader from "react-loader-spinner";
 import "react-loader-spinner/dist/loader/css/react-spinner-loader.css";
 import Category from "../Components/Category";
