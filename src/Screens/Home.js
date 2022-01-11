@@ -199,23 +199,43 @@ function Home() {
               <Category
                 title={"Action Movies"}
                 fetchURL={requests.fetchAction}
+                setDetail={setDetail}
               />
-              <Category title={"Trending"} fetchURL={requests.fetchTrending} />
-              <Category title={"Comedies"} fetchURL={requests.fetchComedy} />
+              <Category
+                title={"Trending"}
+                fetchURL={requests.fetchTrending}
+                setDetail={setDetail}
+              />
+              <Category
+                title={"Comedies"}
+                fetchURL={requests.fetchComedy}
+                setDetail={setDetail}
+              />
               <Category
                 title={"Documentaries"}
                 fetchURL={requests.fetchDocumentary}
+                setDetail={setDetail}
               />
               <Category
                 title={"Adventure Movies"}
                 fetchURL={requests.fetchAdventure}
+                setDetail={setDetail}
               />
-              <Category title={"Fantasies"} fetchURL={requests.fetchFantasy} />
+              <Category
+                title={"Fantasies"}
+                fetchURL={requests.fetchFantasy}
+                setDetail={setDetail}
+              />
               <Category
                 title={"Thriller Movies"}
                 fetchURL={requests.fetchThriller}
+                setDetail={setDetail}
               />
-              <Category title={"Drama"} fetchURL={requests.fetchDrama} />
+              <Category
+                title={"Drama"}
+                fetchURL={requests.fetchDrama}
+                setDetail={setDetail}
+              />
             </div>
           </div>
         </>
