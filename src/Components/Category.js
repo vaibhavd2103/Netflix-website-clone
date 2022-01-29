@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import instance from "../axios";
-import { colors, styles } from "../Constants/styles";
+import { colors, styles, useWindowDimensions } from "../Constants/styles";
 import { requests } from "../requests";
 import "../Constants/cssStyles.css";
 // import { API_KEY } from "../requests";
 
 function Category({ title, fetchURL, setDetail }) {
+  const { width, height } = useWindowDimensions();
   const [hover, setHover] = useState(false);
 
   const [loading, setLoading] = useState(true);
@@ -44,7 +45,7 @@ function Category({ title, fetchURL, setDetail }) {
             display: "flex",
             justifyContent: "center",
             width: "100vw",
-            height: "200",
+            height: "100px",
           }}
         >
           {/* <Loader
@@ -61,6 +62,10 @@ function Category({ title, fetchURL, setDetail }) {
             display: "flex",
             paddingLeft: 30,
             flexDirection: "column",
+            //   backgroundColor: "grey",
+            marginBottom: 10,
+            height: width / 8,
+            minHeight: 170,
           }}
         >
           <a
@@ -79,8 +84,7 @@ function Category({ title, fetchURL, setDetail }) {
             style={{
               display: "flex",
               flexDirection: "row",
-              paddingTop: 20,
-              paddingBottom: 70,
+              paddingTop: 10,
               paddingLeft: 20,
             }}
           >
@@ -102,11 +106,22 @@ function Category({ title, fetchURL, setDetail }) {
                   className="movie_block"
                   style={{
                     ...styles.movieBlock,
+                    // height: 120,
+                    // width: width / 6,
+                    // minWidth: 200,
+                    // backgroundColor: "grey",
                   }}
                 >
                   <img
                     src={`${imageUrl}${item.backdrop_path}`}
                     className="category_poster"
+                    style={{
+                      height: width / 12,
+                      width: width / 7,
+                      borderRadius: 10,
+                      minWidth: 170,
+                      minHeight: (170 * 7) / 12,
+                    }}
                   />
                 </div>
               );

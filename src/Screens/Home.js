@@ -11,12 +11,15 @@ import { FaPlay } from "react-icons/fa";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import axios from "axios";
 import MovieDetail from "../Components/MovieDetail";
+import analyze from "rgbaster";
 
 function Home() {
   const { width, height } = useWindowDimensions();
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const imageUrl = "https://image.tmdb.org/t/p/original/";
   const [movies, setMovies] = useState({});
+  const [dominantColor, setDominantColor] = useState("#fff");
+  const [secondaryColor, setSecondaryColor] = useState("#aaaa");
   const id = Math.floor(Math.random() * 20);
   useEffect(() => {
     const fetchMovies = async () => {
@@ -77,7 +80,12 @@ function Home() {
             </div>
           )}
           <div className="home_container">
-            <div style={{}}>
+            <div
+              className="poster_container"
+              style={{
+                height: width / 1.8,
+              }}
+            >
               <img
                 src={`${imageUrl}${movies.backdrop_path}`}
                 className="poster"
@@ -102,6 +110,7 @@ function Home() {
                     zIndex: 40,
                     textShadow: 10,
                     maxWidth: 600,
+                    letterSpacing: 1,
                   }}
                 >
                   {movies.name}
@@ -115,9 +124,9 @@ function Home() {
                     fontSize: width / 85,
                     zIndex: 40,
                     textShadow: 20,
-                    maxWidth: 600,
+                    maxWidth: 800,
                     color: "#fff",
-                    width: width / 2,
+                    width: width / 1.5,
                     minWidth: 200,
                   }}
                 >
@@ -132,7 +141,7 @@ function Home() {
                       alignItems: "center",
                       borderRadius: 5,
                       padding: 10,
-                      backgroundColor: "#fff",
+                      backgroundColor: dominantColor,
                       paddingInline: 20,
                     }}
                   >
@@ -156,7 +165,7 @@ function Home() {
                       alignItems: "center",
                       borderRadius: 5,
                       padding: 10,
-                      backgroundColor: "#aaaa",
+                      backgroundColor: secondaryColor,
                       paddingInline: 20,
                       marginLeft: 10,
                     }}
@@ -187,15 +196,15 @@ function Home() {
             </div>
             <div
               style={{
-                marginTop: -(width / 3.5),
+                marginTop: -(width / 6),
               }}
             >
               {/* <div className="poster_fade"></div> */}
-              <Category
+              {/* <Category
                 title={"Movies for you"}
                 fetchURL={requests.fetchAllMovies}
                 setDetail={setDetail}
-              />
+              /> */}
               <Category
                 title={"Action Movies"}
                 fetchURL={requests.fetchAction}

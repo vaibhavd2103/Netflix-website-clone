@@ -9,6 +9,7 @@ function TopNavigator() {
         width: "100%",
         alignItems: "center",
         position: "absolute",
+        zIndex: 20,
         //    paddingLeft: 50,
         //    paddingRight: 50,
       }}
@@ -23,6 +24,7 @@ function TopNavigator() {
             marginLeft: 30,
             position: "absolute",
             top: 0,
+            zIndex: 20,
           }}
         />
 
