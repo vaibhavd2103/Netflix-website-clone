@@ -26,7 +26,7 @@ function MovieDetail() {
       await instance
         .get(`/movie/${id}/credits?api_key=1bbd459c320f161b8dee93104cf1740e`)
         .then((response) => {
-          // console.log(response.data.cast);
+          console.log(response.data.cast);
           setCast(response.data.cast);
           setLoading(false);
         });
@@ -40,7 +40,7 @@ function MovieDetail() {
       await instance
         .get(`/movie/${id}/videos?api_key=1bbd459c320f161b8dee93104cf1740e`)
         .then((response) => {
-          console.log(response);
+          // console.log(response);
           //     setSimilarMovies(response.data.results);
           setLoading(false);
         });
@@ -59,7 +59,18 @@ function MovieDetail() {
       className="detail_parent_div"
     >
       {loading ? (
-        <a className="text">Loading</a>
+        <div
+          style={{
+            display: "flex",
+            flex: 1,
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <a className="text" style={{ fontSize: 40, textAlign: "center" }}>
+            Loading
+          </a>
+        </div>
       ) : (
         <>
           <div className="detail_poster">
@@ -78,13 +89,13 @@ function MovieDetail() {
               className="poster_name"
               style={{
                 fontWeight: "500",
-                marginBottom: 20,
+                //  marginBottom: 20,
                 fontSize: width > 850 ? 50 : width / 20,
                 zIndex: 40,
                 textShadow: 10,
                 maxWidth: 600,
                 position: "relative",
-                bottom: width > 850 ? "300px" : width / 3.15,
+                bottom: width > 850 ? "70px" : width / 10,
                 left: width > 850 ? "50px" : width / 17,
               }}
             >
@@ -150,17 +161,46 @@ function MovieDetail() {
                 >
                   Cast :{" "}
                 </a>
-                {cast.map((item, i) => {
-                  return (
-                    <a
-                      className="text"
-                      style={{ fontSize: 20, marginRight: 3 }}
-                      key={item.id}
-                    >
-                      {item.original_name},
-                    </a>
-                  );
-                })}
+                <div
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    overflowX: "scroll",
+                    overflowY: "hidden",
+                  }}
+                  className="cast_container"
+                >
+                  {cast.map((item, i) => {
+                    return (
+                      <div
+                        style={{
+                          display: "flex",
+                          flexDirection: "column",
+                          //  backgroundColor: "grey",
+                          margin: 5,
+                          alignItems: "center",
+                        }}
+                        key={item.id}
+                      >
+                        <img
+                          src={`${imageUrl}${item.profile_path}`}
+                          style={{
+                            width: 100,
+                            height: 150,
+                            objectFit: "cover",
+                          }}
+                        />
+                        <a className="text" style={{ fontSize: 15 }}>
+                          {item.original_name}
+                          {"\n"}
+                          <a style={{ fontSize: 15, color: colors.primary }}>
+                            {item.name}
+                          </a>
+                        </a>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
               <div
                 style={{

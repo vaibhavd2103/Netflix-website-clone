@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import Loader from "react-loader-spinner";
 import instance from "../axios";
-import { colors, styles } from "../Constants/styles";
+import { colors, styles, useWindowDimensions } from "../Constants/styles";
 import { requests } from "../requests";
 import "../Constants/cssStyles.css";
 // import { API_KEY } from "../requests";
 
 function Category({ title, fetchURL, setDetail }) {
+	const { width, height } = useWindowDimensions();
 	const [hover, setHover] = useState(false);
 
 	const [loading, setLoading] = useState(true);
@@ -48,6 +49,20 @@ function Category({ title, fetchURL, setDetail }) {
 					}}
 				>
 					{/* <Loader
+=======
+  return (
+    <>
+      {loading ? (
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            width: "100vw",
+            height: "100px",
+          }}
+        >
+          {/* <Loader
+>>>>>>> 80465a96d94561c694090acea9a89e7fbb226d81
             type="Circles"
             color={colors.primary}
             height={40}
